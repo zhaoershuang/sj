@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     .box{
+        width:600px;
+        height: 600px;
+        border:1px solid red;
+        margin:100px auto;
+     }   
+     .box>div{
+        width: 33%;
+        height: 33%;
+        border: 1px solid red;
+        float: left;
+        text-align: center;
+        line-height: 200px;
+        font-size: 30px;
+        font-weight: bold;
+     }
+     .start{
+        background-color: #9e5959;
+        cursor: pointer;
+     }
+    </style>
+</head>
+<body>
+    <div class="box">
+    <div class="option">黄焖鸡</div>
+    <div class="option">兰州</div> 
+    <div class="option">沙县</div>
+    <div class="option">黄焖鸡</div> 
+    <div class="start">开始</div>
+    <div class="option">沙县</div>
+    <div class="option">黄焖鸡</div>
+    <div class="option">兰州</div> 
+    <div class="option">沙县</div>
+    </div>
+    <script>
+        window.onload=function(){
+            var btn=document.querySelector('.start');
+            var options=document.querySelectorAll('.option');
+            var timer=null;
+            var num=0;
+            btn.addEventListener('click',function () {
+            num++;
+            if(num%2!=0){
+                timer=setInterval(()=>{
+                var ran=Math.round(Math.random()*7);
+                for (let i=0;i<options.length;i++) {
+                   options[i].style.backgroundColor='#fff';
+                }
+                options[ran].style.backgroundColor='orange';
+                },100);
+                btn.innerHTML='结束';
+            }else{
+                clearInterval(timer);
+                btn.innerHTML='开始';
+            }
+              });
+        }
+    </script>
+</body>
+</html>
